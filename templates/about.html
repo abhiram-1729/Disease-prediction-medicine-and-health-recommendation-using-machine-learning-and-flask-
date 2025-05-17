@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About Us | HealthSync</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      :root {
+          --primary: #4a6fa5;
+          --secondary: #166088;
+          --accent: #4fc3f7;
+          --light: #f8f9fa;
+          --dark: #212529;
+          --success: #66bb6a;
+          --warning: #ffa726;
+          --danger: #ef5350;
+          --gradient-primary: linear-gradient(135deg, #4a6fa5 0%, #166088 100%);
+      }
+      
+      body {
+          font-family: 'Poppins', sans-serif;
+          background-color: #f5f7fa;
+          color: #333;
+          line-height: 1.6;
+      }
+      
+      .logo {
+          width: 50px;
+          height: 50px;
+          margin-right: 10px;
+      }
+      
+      .myimg {
+          width: 100px;
+          height: 70px;
+          object-fit:cover;
+          margin-right: -20px;
+      }
+      
+      .navbar {
+          background: var(--gradient-primary) !important;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          padding: 0.5rem 1rem;
+      }
+      
+      .navbar-brand {
+          font-weight: 700;
+          font-size: 1.5rem;
+          color: white !important;
+          display: flex;
+          align-items: center;
+      }
+
+      .brand-text {
+          display: flex;
+          flex-direction: column;
+          line-height: 1;
+          margin-left: 10px;
+      }
+
+      .health {
+          display: block;
+          margin-bottom : 0px;
+      }
+
+      .sync {
+          display: block;
+      }
+      
+      .nav-link {
+          color: rgba(255, 255, 255, 0.85) !important;
+          font-weight: 500;
+          padding: 0.5rem 1rem;
+          transition: all 0.3s ease;
+          border-radius: 4px;
+      }
+      
+      .nav-link:hover, .nav-link.active {
+          color: white !important;
+          background-color: rgba(255, 255, 255, 0.15);
+      }
+      
+      .about-hero {
+          background: var(--gradient-primary);
+          color: white;
+          padding: 4rem 0;
+          margin-bottom: 3rem;
+          border-radius: 0 0 20px 20px;
+          box-shadow: 0 10px 30px rgba(22, 96, 136, 0.2);
+      }
+      
+      .about-hero h1 {
+          font-weight: 700;
+          font-size: 3rem;
+          margin-bottom: 1rem;
+      }
+      
+      .about-hero p {
+          font-size: 1.2rem;
+          opacity: 0.9;
+          max-width: 700px;
+          margin: 0 auto;
+      }
+      
+      .section-title {
+          font-weight: 700;
+          color: var(--secondary);
+          margin-bottom: 2rem;
+          position: relative;
+          padding-bottom: 10px;
+      }
+      
+      .section-title:after {
+          content: '';
+          position: absolute;
+          width: 60px;
+          height: 4px;
+          background: var(--accent);
+          bottom: 0;
+          left: 0;
+          border-radius: 2px;
+      }
+      
+      .about-content {
+          background: white;
+          border-radius: 15px;
+          padding: 3rem;
+          box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+          margin-bottom: 3rem;
+      }
+      
+      .feature-box {
+          text-align: center;
+          padding: 2rem;
+          border-radius: 12px;
+          transition: all 0.3s ease;
+          margin-bottom: 2rem;
+          background: white;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+      
+      .feature-box:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+      
+      .feature-icon {
+          font-size: 3rem;
+          color: var(--primary);
+          margin-bottom: 1.5rem;
+      }
+      
+      .team-card {
+          border: none;
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+          transition: all 0.3s ease;
+          margin-bottom: 2rem;
+      }
+      
+      .team-card:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+      
+      .team-img {
+          height: 250px;
+          object-fit: cover;
+      }
+      
+      .team-social {
+          display: flex;
+          justify-content: center;
+          padding: 1rem 0;
+      }
+      
+      .team-social a {
+          color: var(--primary);
+          margin: 0 10px;
+          font-size: 1.2rem;
+          transition: all 0.3s ease;
+      }
+      
+      .team-social a:hover {
+          color: var(--secondary);
+          transform: translateY(-3px);
+      }
+      
+      .stats-box {
+          text-align: center;
+          padding: 2rem;
+          border-radius: 12px;
+          background: white;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+          margin-bottom: 2rem;
+      }
+      
+      .stats-number {
+          font-size: 3rem;
+          font-weight: 700;
+          color: var(--primary);
+          margin-bottom: 0.5rem;
+      }
+      
+      .stats-label {
+          font-size: 1rem;
+          color: #666;
+      }
+      
+      .footer {
+          background: var(--gradient-primary);
+          color: white;
+          padding: 3rem 0;
+          margin-top: 3rem;
+      }
+      
+      .footer a {
+          color: rgba(255, 255, 255, 0.8);
+          transition: color 0.3s ease;
+      }
+      
+      .footer a:hover {
+          color: white;
+          text-decoration: none;
+      }
+      
+      .footer-title {
+          font-weight: 700;
+          margin-bottom: 1.5rem;
+          position: relative;
+      }
+      
+      .footer-title:after {
+          content: '';
+          position: absolute;
+          width: 40px;
+          height: 3px;
+          background: var(--accent);
+          bottom: -10px;
+          left: 0;
+      }
+      
+      @media (max-width: 768px) {
+          .about-hero h1 {
+              font-size: 2.5rem;
+          }
+          
+          .about-hero p {
+              font-size: 1rem;
+          }
+          
+          .about-content {
+              padding: 2rem 1.5rem;
+          }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+      <div class="container">
+          <a class="navbar-brand" href="/#">
+              <img class="myimg" src="/static/img.png" alt="HealthSync Logo">
+              <div class="brand-text">
+                  <span class="health">Health</span>
+                  <span class="sync">Metric</span>
+              </div>
+          </a>
+          
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                      <a class="nav-link" href="/"><i class="fas fa-home me-1"></i> Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link active" href="/about"><i class="fas fa-info-circle me-1"></i> About</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/contact"><i class="fas fa-envelope me-1"></i> Contact</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/developer"><i class="fas fa-code me-1"></i> Developers</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/blog"><i class="fas fa-blog me-1"></i> Blog</a>
+                  </li>
+              </ul>
+              
+              <!-- <form class="d-flex ms-3" role="search">
+                  <div class="input-group">
+                      <input class="form-control" type="search" placeholder="Search symptoms..." aria-label="Search">
+                      <button class="btn btn-light" type="submit"><i class="fas fa-search"></i></button>
+                  </div>
+              </form> -->
+          </div>
+      </div>
+    </nav>
+
+    <section class="about-hero text-center">
+      <div class="container">
+        <h1>About HealthSync</h1>
+        <p>Where health meets technology for a brighter, healthier future</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="about-content">
+        <h2 class="section-title">Our Vision</h2>
+        <p>We envision a world where access to healthcare information is not just a luxury but a fundamental right. Our journey began with a simple yet powerful idea: to empower individuals with the knowledge and tools they need to take control of their health.</p>
+        
+        <h2 class="section-title">Who We Are</h2>
+        <p>We are a passionate team of healthcare professionals, data scientists, and technology enthusiasts who share a common goal: to make healthcare accessible, understandable, and personalized for you. With years of experience in both healthcare and cutting-edge technology, we've come together to create this platform as a testament to our commitment to your well-being.</p>
+        
+        <h2 class="section-title">Our Mission</h2>
+        <p>At HealthSync, our mission is to provide you with a seamless and intuitive platform that leverages the power of artificial intelligence and machine learning. We want to assist you in identifying potential health concerns based on your reported symptoms, all while offering a wealth of educational resources to enhance your health literacy.</p>
+      </div>
+      
+      <div class="row text-center mb-5">
+        <div class="col-md-3">
+          <div class="stats-box">
+            <div class="stats-number">10,000+</div>
+            <div class="stats-label">Health Conditions</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="stats-box">
+            <div class="stats-number">95%</div>
+            <div class="stats-label">Accuracy</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="stats-box">
+            <div class="stats-number">24/7</div>
+            <div class="stats-label">Availability</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="stats-box">
+            <div class="stats-number">1M+</div>
+            <div class="stats-label">Users Served</div>
+          </div>
+        </div>
+      </div>
+      
+      <h2 class="section-title text-center mb-5">How We Do It</h2>
+      
+      <div class="row">
+        <div class="col-md-4">
+          <div class="feature-box">
+            <div class="feature-icon">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h4>ML-Powered Analysis</h4>
+            <p>Our platform utilizes a robust machine learning model trained on a vast dataset of symptoms and diseases.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-box">
+            <div class="feature-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h4>Continuous Learning</h4>
+            <p>Our system constantly improves as it processes more data and learns from medical professionals.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-box">
+            <div class="feature-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h4>Privacy First</h4>
+            <p>Your health data is encrypted and never shared without your explicit consent.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="about-content mt-5">
+        <h2 class="section-title">Your Well-being, Our Priority</h2>
+        <p>Your health is our top priority. We understand that navigating the complexities of healthcare can be daunting. That's why we've gone the extra mile to provide not only accurate predictions but also comprehensive information about each disease. You'll find descriptions, recommended precautions, medications, dietary advice, and workout tips to support your journey to better health.</p>
+        
+        <h2 class="section-title">Join Us on this Journey</h2>
+        <p>We invite you to explore our platform, engage with our educational content, and take control of your health journey. Together, we can revolutionize the way individuals access and understand healthcare information.</p>
+        <p>Thank you for choosing HealthSync as your trusted health companion. We are here to empower you with knowledge, support, and a brighter, healthier future.</p>
+      </div>
+      
+      <!-- <h2 class="section-title text-center my-5">Meet Our Team</h2>
+      
+      <div class="row">
+        <div class="col-md-3">
+          <div class="card team-card">
+            <img src="https://i.imgur.com/JzVS5bM.jpg" class="card-img-top team-img" alt="Dr. Sarah Johnson">
+            <div class="card-body text-center">
+              <h5 class="card-title">Dr. Sarah Johnson</h5>
+              <p class="text-muted">Chief Medical Officer</p>
+              <div class="team-social">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card team-card">
+            <img src="https://i.imgur.com/5XZwzQk.jpg" class="card-img-top team-img" alt="Michael Chen">
+            <div class="card-body text-center">
+              <h5 class="card-title">Michael Chen</h5>
+              <p class="text-muted">Lead Data Scientist</p>
+              <div class="team-social">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card team-card">
+            <img src="https://i.imgur.com/8Km9tLL.jpg" class="card-img-top team-img" alt="Emma Rodriguez">
+            <div class="card-body text-center">
+              <h5 class="card-title">Emma Rodriguez</h5>
+              <p class="text-muted">UX/UI Designer</p>
+              <div class="team-social">
+                <a href="#"><i class="fab fa-dribbble"></i></a>
+                <a href="#"><i class="fab fa-behance"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card team-card">
+            <img src="https://i.imgur.com/7QqGX5T.jpg" class="card-img-top team-img" alt="David Wilson">
+            <div class="card-body text-center">
+              <h5 class="card-title">David Wilson</h5>
+              <p class="text-muted">Software Engineer</p>
+              <div class="team-social">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-stack-overflow"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h5 class="footer-title">HealthMetric</h5>
+            <p>Empowering your health journey with AI-powered insights and personalized care.</p>
+            <div class="mt-3">
+              <a href="#" class="me-3"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="me-3"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="me-3"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="me-3"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <h5 class="footer-title">Quick Links</h5>
+            <ul class="list-unstyled">
+              <li><a href="/">Home</a></li>
+              <li><a href="/about">About</a></li>
+              <li><a href="/contact">Contact</a></li>
+              <li><a href="/blog">Blog</a></li>
+              <li><a href="/privacy">Privacy Policy</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h5 class="footer-title">Services</h5>
+            <ul class="list-unstyled">
+              <li><a href="#">Symptom Checker</a></li>
+              <li><a href="#">Health Tracker</a></li>
+              <li><a href="#">Medication Reminder</a></li>
+              <li><a href="#">Telemedicine</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h5 class="footer-title">Contact Us</h5>
+            <ul class="list-unstyled">
+              <li><i class="fas fa-map-marker-alt me-2"></i> Telangana</li>
+              <li><i class="fas fa-phone me-2"></i>7702858070</li>
+              <li><i class="fas fa-envelope me-2"></i> abhiramrangoon@gmail.com</li>
+            </ul>
+          </div>
+        </div>
+        <hr class="mt-4" style="border-color: rgba(255,255,255,0.1);">
+        <div class="text-center pt-2">
+          <p class="mb-0">&copy; 2023 HealthMetric. All rights reserved.</p>
+        </div>
+      </div> -->
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>

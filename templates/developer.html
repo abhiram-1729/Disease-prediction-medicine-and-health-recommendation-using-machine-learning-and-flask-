@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About Developer | HealthSync</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      :root {
+          --primary: #4a6fa5;
+          --secondary: #166088;
+          --accent: #4fc3f7;
+          --light: #f8f9fa;
+          --dark: #212529;
+          --success: #66bb6a;
+          --warning: #ffa726;
+          --danger: #ef5350;
+          --gradient-primary: linear-gradient(135deg, #4a6fa5 0%, #166088 100%);
+      }
+      
+      body {
+          font-family: 'Poppins', sans-serif;
+          background-color: #f5f7fa;
+          color: #333;
+          line-height: 1.6;
+      }
+      
+      .logo {
+          width: 50px;
+          height: 50px;
+          margin-right: 10px;
+      }
+      
+      .myimg {
+          width: 100px;
+          height: 70px;
+          object-fit:cover;
+          margin-right: -20px;
+      }
+      
+      .navbar {
+          background: var(--gradient-primary) !important;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          padding: 0.5rem 1rem;
+      }
+      
+      .navbar-brand {
+          font-weight: 700;
+          font-size: 1.5rem;
+          color: white !important;
+          display: flex;
+          align-items: center;
+      }
+
+      .brand-text {
+          display: flex;
+          flex-direction: column;
+          line-height: 1;
+          margin-left: 10px;
+      }
+
+      .health {
+          display: block;
+          margin-bottom : -20px;
+      }
+
+      .sync {
+          display: block;
+      }
+
+      .spacer {
+          height: 0px;
+      }
+      
+      .nav-link {
+          color: rgba(255, 255, 255, 0.85) !important;
+          font-weight: 500;
+          padding: 0.5rem 1rem;
+          transition: all 0.3s ease;
+          border-radius: 4px;
+      }
+      
+      .nav-link:hover, .nav-link.active {
+          color: white !important;
+          background-color: rgba(255, 255, 255, 0.15);
+      }
+      
+      /* Developer Page Specific Styles */
+      .developer-header {
+          background: var(--gradient-primary);
+          color: white;
+          padding: 5rem 0 3rem;
+          margin-bottom: 3rem;
+          position: relative;
+          overflow: hidden;
+      }
+      
+      .developer-header::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') no-repeat center center;
+          background-size: cover;
+          opacity: 0.15;
+      }
+      
+      .developer-title {
+          font-size: 3rem;
+          font-weight: 800;
+          margin-bottom: 1rem;
+          position: relative;
+      }
+      
+      .developer-subtitle {
+          font-size: 1.2rem;
+          opacity: 0.9;
+          position: relative;
+      }
+      
+      .developer-content {
+          background: white;
+          border-radius: 12px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+          padding: 3rem;
+          margin-top: -50px;
+          position: relative;
+          z-index: 1;
+      }
+      
+      .section-title {
+          color: var(--primary);
+          font-weight: 700;
+          margin: 2rem 0 1.5rem;
+          position: relative;
+          padding-bottom: 10px;
+      }
+      
+      .section-title::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 60px;
+          height: 3px;
+          background: var(--accent);
+          border-radius: 3px;
+      }
+      
+      .highlight-box {
+          background: linear-gradient(135deg, rgba(79, 195, 247, 0.1) 0%, rgba(22, 96, 136, 0.1) 100%);
+          border-left: 4px solid var(--accent);
+          padding: 1.5rem;
+          border-radius: 0 8px 8px 0;
+          margin: 1.5rem 0;
+      }
+      
+      .skills-badge {
+          display: inline-block;
+          background: var(--accent);
+          color: white;
+          padding: 0.5rem 1rem;
+          border-radius: 20px;
+          margin: 0.3rem;
+          font-size: 0.9rem;
+          transition: all 0.3s ease;
+      }
+      
+      .skills-badge:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 5px 15px rgba(79, 195, 247, 0.3);
+      }
+      
+      .profile-image {
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 5px solid white;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+          margin: 0 auto 2rem;
+          display: block;
+      }
+      
+      .social-links {
+          margin-top: 2rem;
+      }
+      
+      .social-link {
+          display: inline-block;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: var(--primary);
+          color: white;
+          text-align: center;
+          line-height: 40px;
+          margin: 0 0.5rem;
+          transition: all 0.3s ease;
+      }
+      
+      .social-link:hover {
+          background: var(--secondary);
+          transform: translateY(-3px);
+      }
+      
+      .timeline {
+          position: relative;
+          padding-left: 30px;
+          margin: 2rem 0;
+      }
+      
+      .timeline::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 10px;
+          width: 2px;
+          background: var(--accent);
+      }
+      
+      .timeline-item {
+          position: relative;
+          margin-bottom: 2rem;
+          padding-left: 20px;
+      }
+      
+      .timeline-item::before {
+          content: '';
+          position: absolute;
+          top: 5px;
+          left: 0;
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: var(--primary);
+          border: 2px solid var(--accent);
+      }
+      
+      .timeline-date {
+          font-weight: 600;
+          color: var(--secondary);
+      }
+      
+      .timeline-title {
+          font-weight: 700;
+          margin-bottom: 0.5rem;
+      }
+      
+      .footer {
+          background: var(--gradient-primary);
+          color: white;
+          padding: 2rem 0;
+          margin-top: 3rem;
+      }
+      
+      .footer a {
+          color: rgba(255, 255, 255, 0.8);
+          transition: color 0.3s ease;
+      }
+      
+      .footer a:hover {
+          color: white;
+          text-decoration: none;
+      }
+      
+      @media (max-width: 768px) {
+          .developer-title {
+              font-size: 2rem;
+          }
+          
+          .developer-content {
+              padding: 2rem;
+          }
+          
+          .profile-image {
+              width: 150px;
+              height: 150px;
+          }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+      <div class="container">
+          <!-- Logo and Brand -->
+          <a class="navbar-brand" href="/#">
+              <img class="myimg" src="./../static/img.png" alt="HealthSync Logo">
+              <div class="brand-text">
+                  <span class="health">Health</span><br>
+                  <span class="sync">Metric</span>
+              </div>
+          </a>
+          
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                      <a class="nav-link" href="/"><i class="fas fa-home me-1"></i> Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/about"><i class="fas fa-info-circle me-1"></i> About</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/contact"><i class="fas fa-envelope me-1"></i> Contact</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link active" href="/developer"><i class="fas fa-code me-1"></i> Developers</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/blog"><i class="fas fa-blog me-1"></i> Blog</a>
+                  </li>
+              </ul>
+              
+              <!-- <form class="d-flex ms-3" role="search">
+                  <div class="input-group">
+                      <input class="form-control" type="search" placeholder="Search symptoms..." aria-label="Search">
+                      <button class="btn btn-light" type="submit"><i class="fas fa-search"></i></button>
+                  </div>
+              </form> -->
+          </div>
+      </div>
+    </nav>
+
+    <header class="developer-header text-center">
+      <div class="container">
+          <h1 class="developer-title">Rachana | Divya | Abhiram  </h1>
+          <p class="developer-subtitle"> Ml Expert  | Technology Enthusiast |  Flask/Django Developer </p>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="developer-content">
+          <div class="row">
+              <div class="col-lg-4 text-center">
+                  <img src="./../static/my-avatar.png" alt="Junaid Khan" class="profile-image">                  
+                  <div class="skills-section">
+                      <h3 class="section-title">Technical Skills</h3>
+                      <div>
+                        <span class="skills-badge">Python</span>
+                        <span class="skills-badge">Django</span>
+                        <span class="skills-badge">Django REST Framework</span>
+                        <span class="skills-badge">HTML</span>
+                        <span class="skills-badge">CSS</span>
+                        <span class="skills-badge">JavaScript</span>
+                        <span class="skills-badge">React.js</span>
+                        <!-- <span class="skills-badge">Tailwind CSS</span> -->
+                        <span class="skills-badge">Bootstrap</span>
+                        <span class="skills-badge">Figma</span>
+                        <span class="skills-badge">UI/UX Design</span>
+                        <span class="skills-badge">Responsive Design</span>
+                        <span class="skills-badge">REST APIs</span>
+                        <span class="skills-badge">Pandas</span>
+                        <span class="skills-badge">NumPy</span>
+                        <span class="skills-badge">Matplotlib</span>
+                        <span class="skills-badge">Data Visualization</span>
+                        <span class="skills-badge">SQL</span>
+                        <span class="skills-badge">Git</span>
+                      </div>
+                      
+                  </div>
+                  
+                  <div class="social-links">
+                      <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                      <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                      <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                      <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                  </div>
+              </div>
+              
+              <div class="col-lg-8">
+                  <h2 class="section-title">About Us</h2>
+                  <p>Hello, we are Rangoon Abhiram, Duddula Rachana, and Salkuti Divya Reddy—passionate developers and data enthusiasts. Together, we’ve built a project titled 'Disease Prediction and Medicine Recommendation System using Machine Learning and Flask.'
+
+As a team, we bring a strong blend of skills in Python, Flask, Machine Learning, Data Analysis, and Frontend Development. With over years of combined experience in the tech industry, we are driven by a shared vision: to harness the power of technology to improve healthcare accessibility and support early diagnosis.
+
+This project showcases our ability to build full-stack web applications powered by intelligent algorithms. Users can input symptoms through a clean and interactive frontend, which we developed with a focus on usability. The backend, built using Flask, processes the data and communicates with a machine learning model trained on medical datasets to accurately predict possible diseases. Based on the prediction, the system recommends relevant medicines and general wellness suggestions.
+
+Our goal was to create a system that not only predicts but also empowers users with actionable insights—demonstrating how data-driven solutions can enhance healthcare decision-making.</p>
+
+                  
+                  <div class="highlight-box">
+                      <p>"Technology should be accessible and beneficial to everyone. My mission is to bridge the gap between complex AI systems and real-world applications that improve lives."</p>
+                  </div>
+                  
+                  <h3 class="section-title">Our Expertise</h3>
+                  <p>With a strong academic background in computer science and a deep fascination for AI and ML, I embarked on a journey that has taken me across the globe, working on diverse and innovative projects. Over the years, I've had the privilege of collaborating on international projects that have pushed the boundaries of what's possible in AI and ML.</p>
+                  
+                  <!-- <h3 class="section-title">Professional Journey</h3>
+                  <div class="timeline">
+                      <div class="timeline-item">
+                          <div class="timeline-date">2020 - Present</div>
+                          <h4 class="timeline-title">Python/Django Developer</h4>
+                          <p>Leading Ml initiatives at a healthcare technology company, developing machine learning models for diagnostic assistance and patient outcome prediction.</p>
+                      </div>
+                      <div class="timeline-item">
+                          <div class="timeline-date">2017 - 2020</div>
+                          <h4 class="timeline-title">Machine Learning Specialist</h4>
+                          <p>Worked on international projects implementing computer vision solutions for medical imaging analysis across three continents.</p>
+                      </div>
+                      <div class="timeline-item">
+                          <div class="timeline-date">2015 - 2017</div>
+                          <h4 class="timeline-title">AI Research Assistant</h4>
+                          <p>Conducted research in natural language processing at a leading university, publishing papers on healthcare applications of NLP.</p>
+                      </div>
+                  </div> -->
+                  
+                  <h3 class="section-title">A Commitment to Excellence</h3>
+                  <p>My work is driven by a commitment to excellence and a belief that technology should be accessible and beneficial to everyone. Whether it's developing predictive models, creating intelligent algorithms, or designing user-friendly interfaces, I strive for solutions that are both cutting-edge and user-centric.</p>
+                  
+                  <h3 class="section-title">Passion for Health Tech</h3>
+                  <p>The development of HealthSync represents a convergence of my passion for AI and my dedication to improving healthcare accessibility. I believe that AI has the potential to transform the way we approach healthcare, making it more personalized and informative. This platform is a testament to that vision.</p>
+                  
+                  <h3 class="section-title">Join Me on this Journey</h3>
+                  <p>I invite you to explore HealthSync and experience firsthand the fusion of AI and healthcare. Together, we can empower individuals with knowledge, promote well-being, and contribute to a brighter and healthier future.</p>
+                  
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                      <a href="/contact" class="btn btn-primary me-md-2"><i class="fas fa-paper-plane me-2"></i> Contact Me</a>
+                      <a href="/" class="btn btn-outline-primary"><i class="fas fa-arrow-left me-2"></i> Back to Home</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h5 class="footer-title">HealthMetric</h5>
+            <p>Empowering your health journey with ML-powered insights and personalized care.</p>
+            <div class="mt-3">
+              <a href="#" class="me-3"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="me-3"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="me-3"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="me-3"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <h5 class="footer-title">Quick Links</h5>
+            <ul class="list-unstyled">
+              <li><a href="/">Home</a></li>
+              <li><a href="/about">About</a></li>
+              <li><a href="/contact">Contact</a></li>
+              <li><a href="/blog">Blog</a></li>
+              <li><a href="/privacy">Privacy Policy</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h5 class="footer-title">Services</h5>
+            <ul class="list-unstyled">
+              <li><a href="#">Symptom Checker</a></li>
+              <li><a href="#">Health Tracker</a></li>
+              <li><a href="#">Medication Reminder</a></li>
+              <li><a href="#">Telemedicine</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h5 class="footer-title">Contact Us</h5>
+            <ul class="list-unstyled">
+              <li><i class="fas fa-map-marker-alt me-2"></i> Telangana</li>
+              <li><i class="fas fa-phone me-2"></i>7702858070</li>
+              <li><i class="fas fa-envelope me-2"></i> abhiramrangoon@gmail.com</li>
+            </ul>
+          </div>
+        </div>
+        <hr class="mt-4" style="border-color: rgba(255,255,255,0.1);">
+        <div class="text-center pt-2">
+          <p class="mb-0">&copy; 2025 HealthMetric. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>

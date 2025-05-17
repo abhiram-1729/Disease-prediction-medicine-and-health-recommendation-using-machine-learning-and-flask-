@@ -1,0 +1,1026 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HealthSync - Healthcare Center</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --secondary: #166088;
+            --accent: #4fc3f7;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #66bb6a;
+            --warning: #ffa726;
+            --danger: #ef5350;
+            --gradient-primary: linear-gradient(135deg, #4a6fa5 0%, #166088 100%);
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        
+        .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .myimg {
+            width: 100px;
+            height: 70px;
+            object-fit:cover;
+            margin-right: -20px;
+        }
+        
+        .navbar {
+            background: var(--gradient-primary) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 1rem;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white !important;
+            display: flex;
+            align-items: center;
+                    }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+            margin-left: 10px; /* spacing between image and text */
+        }
+
+        .health {
+            display: block;
+            margin-bottom : -20px;
+        }
+
+        .sync {
+            display: block;
+        }
+
+        .spacer {
+            height: 0px; /* Adjust this value for more or less space */
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.85) !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: white !important;
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .hero-title:after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 4px;
+            background: var(--accent);
+            bottom: -10px;
+            left: 20%;
+            border-radius: 2px;
+        }
+        
+        .diagnostic-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .diagnostic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+        }
+        
+        .form-control {
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .form-control:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 0.25rem rgba(79, 195, 247, 0.25);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline-success {
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+        }
+        
+        .voice-btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .voice-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .voice-btn.listening {
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(79, 195, 247, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(79, 195, 247, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(79, 195, 247, 0); }
+        }
+        
+        .result-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .result-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .result-title {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .result-title i {
+            margin-right: 10px;
+            font-size: 1.25rem;
+        }
+        
+        .modal-header {
+            background: var(--gradient-primary) !important;
+            color: white !important;
+            border-bottom: none;
+            border-radius: 12px 12px 0 0 !important;
+        }
+        
+        .modal-content {
+            border: none;
+            border-radius: 12px !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .toggle-button {
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .toggle-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .footer {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: color 0.3s ease;
+        }
+        
+        .footer a:hover {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .transcription-box {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-left: 3px solid var(--accent);
+        }
+        
+        .ai-powered-badge {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .toggle-button {
+                width: 100%;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <!-- Logo and Brand -->
+            <a class="navbar-brand" href="#">
+                <img class="myimg" src="./../static/img.png" alt="HealthSync Logo">
+                <div class="brand-text">
+                    <span class="health">Health</span><br>
+                    <span class="sync">Metric</span>
+                </div>
+                <!-- <span class="ai-powered-badge">ML-Powered</span> -->
+            </a>
+            
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#"><i class="fas fa-home me-1"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about"><i class="fas fa-info-circle me-1"></i> About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact"><i class="fas fa-envelope me-1"></i> Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/developer"><i class="fas fa-code me-1"></i> Developers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/blog"><i class="fas fa-blog me-1"></i> Blog</a>
+                    </li>
+                </ul>
+                
+                <!-- <form class="d-flex ms-3" role="search">
+                    <div class="input-group">
+                        <input class="form-control" type="search" placeholder="Search symptoms..." aria-label="Search">
+                        <button class="btn btn-light" type="submit"><i class="fas fa-search"></i></button>
+                    </div>
+                </form> -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="text-center mb-5">
+            <h1 class="hero-title">ML-Powered Health Diagnosis</h1>
+            <p class="lead text-muted">Describe your symptoms and our advanced ML will help identify potential conditions</p>
+        </div>
+        
+        <!-- Diagnostic Form Card -->
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="diagnostic-card">
+                    <form action="/predict" method="post">
+                        <div class="form-group mb-4">
+                            <label for="symptoms" class="form-label fw-bold mb-3">
+                                <i class="fas fa-notes-medical me-2"></i>Describe Your Symptoms
+                            </label>
+                            <input list="symptomsList" class="form-control" id="symptoms" name="symptoms" rows="3" 
+                                   placeholder="Enter at least 3 symptoms separated by commas (e.g., headache, fever, fatigue...)" 
+                                   autocomplete="off">
+                            <datalist id="symptomsList">
+                                <!-- Options will be populated by JavaScript -->
+                            </datalist>
+                            <small class="text-muted">Enter at least 3 symptoms for accurate results</small>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-4">
+    <button type="button" id="startSpeechRecognition" class="voice-btn me-3" title="Voice Input">
+        <i class="fas fa-microphone"></i>
+    </button>
+    <span class="text-muted">Or use voice input</span>
+</div>
+
+<!-- Add this div for validation messages -->
+{% if validation_message %}
+<div class="alert alert-warning mb-4" role="alert">
+    <i class="fas fa-exclamation-circle me-2"></i>{{ validation_message }}
+</div>
+{% endif %}
+
+<!-- Add this div for note messages about ignored symptoms -->
+{% if note_message %}
+<div class="alert alert-info mb-4" role="alert">
+    <i class="fas fa-info-circle me-2"></i>{{ note_message }}
+</div>
+{% endif %}
+                        
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg py-3">
+                                <i class="fas fa-brain me-2"></i> Analyze Symptoms
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        
+        {% if predicted_disease %}
+        <!-- Results Section -->
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-10">
+                <div class="text-center mb-4">
+                    <h2 class="hero-title">Diagnosis Results</h2>
+                    <p class="lead text-muted">Based on your symptoms, here's what our ML system has found</p>
+                </div>
+                
+                <!-- Quick Overview Card -->
+                <div class="result-card mb-4">
+                    <h3 class="result-title"><i class="fas fa-diagnosis text-primary"></i> Quick Overview</h3>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="p-3 bg-light rounded">
+                                <h5 class="fw-bold text-primary">Most Likely Condition</h5>
+                                <p class="mb-0">{{ predicted_disease }}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="p-3 bg-light rounded">
+                                <h5 class="fw-bold text-primary">Confidence Level</h5>
+                                <div class="progress mt-2">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 83%;" aria-valuenow="83" aria-valuemin="0" aria-valuemax="100">83%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Result Navigation Buttons -->
+                <div class="d-flex flex-wrap justify-content-center mb-4">
+                    <button class="toggle-button bg-primary text-white me-2 mb-2" data-bs-toggle="modal" data-bs-target="#diseaseModal">
+                        <i class="fas fa-disease me-2"></i> Disease Details
+                    </button>
+                    <button class="toggle-button bg-info text-white me-2 mb-2" data-bs-toggle="modal" data-bs-target="#descriptionModal">
+                        <i class="fas fa-file-alt me-2"></i> Description
+                    </button>
+                    <button class="toggle-button bg-warning text-white me-2 mb-2" data-bs-toggle="modal" data-bs-target="#precautionModal">
+                        <i class="fas fa-shield-alt me-2"></i> Precautions
+                    </button>
+                    <button class="toggle-button bg-danger text-white me-2 mb-2" data-bs-toggle="modal" data-bs-target="#medicationsModal">
+                        <i class="fas fa-pills me-2"></i> Medications
+                    </button>
+                    <button class="toggle-button bg-success text-white me-2 mb-2" data-bs-toggle="modal" data-bs-target="#workoutsModal">
+                        <i class="fas fa-running me-2"></i> Workouts
+                    </button>
+                    <button class="toggle-button bg-secondary text-white mb-2" data-bs-toggle="modal" data-bs-target="#dietsModal">
+                        <i class="fas fa-utensils me-2"></i> Diet Plan
+                    </button>
+                </div>
+                
+                <!-- Disclaimer -->
+                <div class="alert alert-info mt-4">
+                    <h5 class="alert-heading"><i class="fas fa-exclamation-triangle me-2"></i>Important Note</h5>
+                    <p class="mb-0">This ML-powered diagnosis is for informational purposes only and should not replace professional medical advice. Always consult with a healthcare provider for accurate diagnosis and treatment.</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5 class="mb-3">HealthMetric</h5>
+                    <p>ML-powered healthcare diagnostics to help you understand potential health conditions based on your symptoms.</p>
+                    <div class="social-icons mt-3">
+                        <a href="#" class="me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="me-2"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#">Home</a></li>
+                        <li class="mb-2"><a href="/about">About</a></li>
+                        <li class="mb-2"><a href="/contact">Contact</a></li>
+                        <li class="mb-2"><a href="/blog">Blog</a></li>
+                    </ul>
+                </div>
+                <!-- <div class="col-md-3 mb-4 mb-md-0">
+                    <h5 class="mb-3">Resources</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#">Symptom Checker</a></li>
+                        <li class="mb-2"><a href="#">Health Articles</a></li>
+                        <li class="mb-2"><a href="#">Find a Doctor</a></li>
+                        <li class="mb-2"><a href="#">Emergency Contacts</a></li>
+                    </ul>
+                </div> -->
+                <div class="col-md-3">
+                    <h5 class="mb-3">Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>pargi,Telangana,India</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i>+91-7702858070</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i> abhiramrangoon@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 mb-3" style="border-color: rgba(255,255,255,0.1);">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 HealthMetric. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">
+                        <a href="#" class="me-3">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Disease Modal -->
+    <div class="modal fade" id="diseaseModal" tabindex="-1" aria-labelledby="diseaseModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="diseaseModalLabel"><i class="fas fa-disease me-2"></i> Disease Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 class="fw-bold mb-3">{{ predicted_disease }}</h4>
+                            <div class="mb-4">
+                                <h6 class="fw-bold text-primary">Common Symptoms</h6>
+                                <ul class="list-group list-group-flush">
+                                    {% if disease_symptoms %}
+                                        {% for symptom in disease_symptoms %}
+                                            <li class="list-group-item">{{ symptom.replace('_', ' ').title() }}</li>
+                                        {% endfor %}
+                                    {% else %}
+                                        <li class="list-group-item text-muted">No symptom data available</li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Rest of your modal content -->
+                    </div>
+                </div>
+                        <div class="col-md-6">
+                            <div class="card bg-light border-0 h-100">
+                                <div class="card-body">
+                                    <h6 class="fw-bold text-primary mb-3">Key Information</h6>
+                                    <div class="mb-3">
+                                        <span class="badge bg-primary me-2">Common</span>
+                                        <span class="badge bg-success">Treatable</span>
+                                    </div>
+                                    <p class="mb-2"><strong>Severity:</strong> Mild to Moderate</p>
+                                    <p class="mb-2"><strong>Contagious:</strong> Yes</p>
+                                    <p class="mb-2"><strong>Duration:</strong> 7-10 days</p>
+                                    <p class="mb-0"><strong>Specialist:</strong> General Physician</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Find a Doctor</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Description Modal -->
+    <div class="modal fade" id="descriptionModal" tabindex="-1" aria-labelledby="descriptionModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="descriptionModalLabel"><i class="fas fa-file-alt me-2"></i> Condition Description</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4 class="fw-bold mb-3">{{ predicted_disease }}</h4>
+                    <div class="mb-4">
+                        <p>{{ dis_des }}</p>
+                    </div>
+                    <div class="card bg-light border-0">
+                        <div class="card-body">
+                            <h6 class="fw-bold text-primary mb-3">Did You Know?</h6>
+                            <p class="mb-0">This condition affects approximately 1 in 5 adults annually. Early detection and proper management can significantly reduce recovery time and prevent complications.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Precaution Modal -->
+    <div class="modal fade" id="precautionModal" tabindex="-1" aria-labelledby="precautionModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="precautionModalLabel"><i class="fas fa-shield-alt me-2"></i> Prevention & Precautions</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4 class="fw-bold mb-3">{{ predicted_disease }}</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card border-0 mb-4">
+                                <div class="card-header bg-primary text-white">
+                                    <h6 class="mb-0">Essential Precautions</h6>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        {% for i in my_precautions %}
+                                            <li class="list-group-item d-flex align-items-center">
+                                                <i class="fas fa-check-circle text-success me-2"></i> {{ i }}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card border-0">
+                                <div class="card-header bg-warning text-dark">
+                                    <h6 class="mb-0">When to See a Doctor</h6>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <i class="fas fa-exclamation-triangle text-warning me-2"></i> Symptoms persist for more than 7 days
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <i class="fas fa-exclamation-triangle text-warning me-2"></i> High fever (above 102°F)
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <i class="fas fa-exclamation-triangle text-warning me-2"></i> Difficulty breathing
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <i class="fas fa-exclamation-triangle text-warning me-2"></i> Severe headache or confusion
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Medications Modal -->
+    <div class="modal fade" id="medicationsModal" tabindex="-1" aria-labelledby="medicationsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="medicationsModalLabel"><i class="fas fa-pills me-2"></i> Treatment Options</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4 class="fw-bold mb-3">{{ predicted_disease }}</h4>
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-circle me-2"></i> <strong>Important:</strong> Always consult with a healthcare professional before taking any medication.
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card border-0 mb-4">
+                                <div class="card-header bg-danger text-white">
+                                    <h6 class="mb-0">Common Medications</h6>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        {% for i in medications %}
+                                            <li class="list-group-item d-flex align-items-center">
+                                                <i class="fas fa-capsules text-danger me-2"></i> {{ i }}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card border-0">
+                                <div class="card-header bg-info text-white">
+                                    <h6 class="mb-0">Natural Remedies</h6>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <i class="fas fa-leaf text-success me-2"></i> Ginger tea for nausea
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <i class="fas fa-leaf text-success me-2"></i> Honey for sore throat
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <i class="fas fa-leaf text-success me-2"></i> Steam inhalation
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <i class="fas fa-leaf text-success me-2"></i> Saltwater gargle
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Find a Pharmacy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Workouts Modal -->
+    <div class="modal fade" id="workoutsModal" tabindex="-1" aria-labelledby="workoutsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="workoutsModalLabel"><i class="fas fa-running me-2"></i> Recommended Activities</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4 class="fw-bold mb-3">{{ predicted_disease }}</h4>
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i> <strong>Tip:</strong> Listen to your body and adjust activity levels based on how you feel.
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card border-0 mb-4">
+                                <div class="card-header bg-success text-white">
+                                    <h6 class="mb-0">Recommended Exercises</h6>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        {% for i in workout %}
+                                            <li class="list-group-item d-flex align-items-center">
+                                                <i class="fas fa-heartbeat text-success me-2"></i> {{ i }}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card border-0">
+                                <div class="card-header bg-secondary text-white">
+                                    <h6 class="mb-0">Activity Guidelines</h6>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <i class="fas fa-clock text-secondary me-2"></i> Start with 10-15 minutes daily
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <i class="fas fa-tint text-secondary me-2"></i> Stay hydrated
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <i class="fas fa-thermometer-half text-secondary me-2"></i> Avoid intense workouts during fever
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <i class="fas fa-bed text-secondary me-2"></i> Get adequate rest between sessions
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">View Exercise Videos</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Diets Modal -->
+    <div class="modal fade" id="dietsModal" tabindex="-1" aria-labelledby="dietsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="dietsModalLabel"><i class="fas fa-utensils me-2"></i> Nutrition Plan</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4 class="fw-bold mb-3">{{ predicted_disease }}</h4>
+                    <div class="alert alert-success">
+                        <i class="fas fa-carrot me-2"></i> <strong>Nutrition Tip:</strong> A balanced diet can help speed up recovery and boost your immune system.
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card border-0 mb-4">
+                                <div class="card-header bg-warning text-dark">
+                                    <h6 class="mb-0">Recommended Foods</h6>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        {% for i in my_diet %}
+                                            <li class="list-group-item d-flex align-items-center">
+                                                <i class="fas fa-check text-success me-2"></i> {{ i }}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card border-0">
+                                <div class="card-header bg-danger text-white">
+                                    <h6 class="mb-0">Foods to Avoid</h6>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <i class="fas fa-times text-danger me-2"></i> Processed foods
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <i class="fas fa-times text-danger me-2"></i> Sugary drinks
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <i class="fas fa-times text-danger me-2"></i> Alcohol
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <i class="fas fa-times text-danger me-2"></i> Dairy (if congested)
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card border-0 mt-4">
+                        <div class="card-header bg-primary text-white">
+                            <h6 class="mb-0">Sample Meal Plan</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Meal</th>
+                                            <th>Food</th>
+                                            <th>Benefits</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Breakfast</td>
+                                            <td>Oatmeal with banana</td>
+                                            <td>Easy to digest, provides energy</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lunch</td>
+                                            <td>Grilled chicken with steamed vegetables</td>
+                                            <td>Lean protein, vitamins</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Dinner</td>
+                                            <td>Vegetable soup with whole grain bread</td>
+                                            <td>Hydration, easy digestion</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Snacks</td>
+                                            <td>Yogurt, nuts, fruits</td>
+                                            <td>Probiotics, healthy fats</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Download Meal Plan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const startSpeechRecognitionButton = document.getElementById('startSpeechRecognition');
+        const transcriptionDiv = document.getElementById('transcription');
+        const transcriptionText = document.getElementById('transcriptionText');
+        const symptomsInput = document.getElementById('symptoms');
+        
+        startSpeechRecognitionButton.addEventListener('click', startSpeechRecognition);
+        
+        function startSpeechRecognition() {
+            const recognition = new webkitSpeechRecognition();
+            recognition.lang = 'en-US';
+            
+            // Add listening state
+            startSpeechRecognitionButton.classList.add('listening');
+            startSpeechRecognitionButton.innerHTML = '<i class="fas fa-microphone-slash"></i>';
+            
+            recognition.onresult = function(event) {
+                const result = event.results[0][0].transcript;
+                transcriptionText.textContent = result;
+                symptomsInput.value = result;
+                transcriptionDiv.style.display = 'block';
+                
+                // Remove listening state
+                startSpeechRecognitionButton.classList.remove('listening');
+                startSpeechRecognitionButton.innerHTML = '<i class="fas fa-microphone"></i>';
+            };
+            
+            recognition.onerror = function(event) {
+                console.log('Speech recognition error', event.error);
+                
+                // Remove listening state on error
+                startSpeechRecognitionButton.classList.remove('listening');
+                startSpeechRecognitionButton.innerHTML = '<i class="fas fa-microphone"></i>';
+                
+                // Show error message
+                transcriptionText.textContent = 'Error occurred in speech recognition: ' + event.error;
+                transcriptionDiv.style.display = 'block';
+            };
+            
+            recognition.onend = function() {
+                // Remove listening state when ended
+                if (startSpeechRecognitionButton.classList.contains('listening')) {
+                    startSpeechRecognitionButton.classList.remove('listening');
+                    startSpeechRecognitionButton.innerHTML = '<i class="fas fa-microphone"></i>';
+                }
+            };
+            
+            recognition.start();
+        }
+        
+        function clearTranscription() {
+            transcriptionDiv.style.display = 'none';
+            transcriptionText.textContent = '';
+            symptomsInput.value = '';
+        }
+        
+        // Auto-focus on symptoms input when page loads
+        window.onload = function() {
+            symptomsInput.focus();
+        };
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const symptomsInput = document.getElementById('symptoms');
+    const symptomsList = document.getElementById('symptomsList');
+    const form = document.querySelector('form');
+
+    symptomsInput.addEventListener('input', function() {
+        const inputText = this.value;
+        const parts = inputText.split(',');
+        const currentTerm = parts[parts.length - 1].trim().toLowerCase();
+        
+        // Clear previous suggestions
+        symptomsList.innerHTML = '';
+
+        if (currentTerm.length >= 2) {
+            fetch(`/suggest_symptoms?q=${encodeURIComponent(currentTerm)}`)
+                .then(response => response.json())
+                .then(suggestions => {
+                    suggestions.forEach(symptom => {
+                        const option = document.createElement('option');
+                        option.value = inputText.slice(0, inputText.lastIndexOf(',') + 1) + 
+                                      (inputText.lastIndexOf(',') >= 0 ? ' ' : '') + 
+                                      symptom.replace(/_/g, ' ');
+                        symptomsList.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    });
+
+    // Handle form submission
+    form.addEventListener('submit', function(e) {
+        const symptomsValue = symptomsInput.value.trim();
+        if (symptomsValue) {
+            // Convert to proper format: lowercase with underscores, no spaces
+            const formattedSymptoms = symptomsValue.split(',')
+                .map(s => s.trim().replace(/\s+/g, '_').toLowerCase())
+                .join(',');
+            symptomsInput.value = formattedSymptoms;
+        }
+    });
+
+    // Handle selection from datalist
+    symptomsInput.addEventListener('change', function() {
+        if (this.value && this.value.includes(',')) {
+            this.value = this.value.replace(/, /g, ',').replace(/,+/g, ',');
+        }
+    });
+});
+
+function clearTranscription() {
+    document.getElementById('transcriptionText').textContent = '';
+    document.getElementById('transcription').style.display = 'none';
+}
+    </script>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const symptomsInput = document.getElementById('symptoms');
+            const enteredSymptoms = symptomsInput.value.split(',').filter(s => s.trim() !== '');
+            
+            if (enteredSymptoms.length < 3) {
+                e.preventDefault();
+                alert('Please enter at least 3 symptoms separated by commas for accurate diagnosis.');
+                symptomsInput.focus();
+            }
+        });
+        </script>
+</body>
+</html>
