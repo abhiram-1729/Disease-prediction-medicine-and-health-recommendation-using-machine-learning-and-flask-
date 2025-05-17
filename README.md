@@ -115,22 +115,22 @@ This project bridges healthcare and technology by using **machine learning** to 
  ## Project Related Images
 `Home Page`
 
-![image](https://github.com/abhiram-1729/Ecommerce-website-using-Django-and-Javascript/blob/main/vedios/Homepage.png)
+![image](https://github.com/abhiram-1729/Disease-prediction-medicine-and-health-recommendation-using-machine-learning-and-flask-/blob/main/project%20images/homepage.png)
 
-'Diagnosis'
-![image](https://github.com/abhiram-1729/Ecommerce-website-using-Django-and-Javascript/blob/main/vedios/Homepage.png)
+'Diagnosis Results'
+![image](https://github.com/abhiram-1729/Disease-prediction-medicine-and-health-recommendation-using-machine-learning-and-flask-/blob/main/project%20images/2025-05-02%20-%2012_11_33%20-%20HealthSync%20-%20Healthcare%20Center.png)
 
 'Disease Description'
-![image](https://github.com/abhiram-1729/Ecommerce-website-using-Django-and-Javascript/blob/main/vedios/Homepage.png)
+![image](https://github.com/abhiram-1729/Disease-prediction-medicine-and-health-recommendation-using-machine-learning-and-flask-/blob/main/project%20images/2025-05-02%20-%2012_12_36%20-%20HealthSync%20-%20Healthcare%20Center.png)
 
-'Precautions'
-![image](https://github.com/abhiram-1729/Ecommerce-website-using-Django-and-Javascript/blob/main/vedios/Homepage.png)
+'Preventions and Precautions'
+![image](https://github.com/abhiram-1729/Disease-prediction-medicine-and-health-recommendation-using-machine-learning-and-flask-/blob/main/project%20images/2025-05-02%20-%2012_12_56%20-%20HealthSync%20-%20Healthcare%20Center.png)
 
-'Workouts'
-![image](https://github.com/abhiram-1729/Ecommerce-website-using-Django-and-Javascript/blob/main/vedios/Homepage.png)
+'Medicines and Treatment'
+![image](https://github.com/abhiram-1729/Disease-prediction-medicine-and-health-recommendation-using-machine-learning-and-flask-/blob/main/project%20images/2025-05-02%20-%2012_13_08%20-%20HealthSync%20-%20Healthcare%20Center.png)
 
 'Diets'
-![image](https://github.com/abhiram-1729/Ecommerce-website-using-Django-and-Javascript/blob/main/vedios/Homepage.png)
+![image](https://github.com/abhiram-1729/Disease-prediction-medicine-and-health-recommendation-using-machine-learning-and-flask-/blob/main/project%20images/2025-05-02%20-%2012_13_33%20-%20HealthSync%20-%20Healthcare%20Center.png)
 
 
 
